@@ -1,0 +1,59 @@
+video recording tools
+=====================
+snagit
+camstudio
+
+Career growth:
+==============
+Next year goals:
+================
+Tensorflow - certification
+Big data - certification
+Agile - certification
+LinkedIn - update
+Build community and follow 
+
+
+Proposals to improve KER ...leadership...
+given things doing properly,, but new 
+
+proactiveness to give more proposals to improve KER
+
+================================
+Netflix:
+number blocks
+alpha blocks
+story bots
+
+
+
+-----------------------
+1st round:
+mathematical concepts
+hypothesis tesing
+EDA
+derivate formula
+
+2nd round:
+design
+system design for machine learning
+Given some situation and ask solution
+
+Gradient vanishing
+back propagation
+
+python
+=======
+data structures algorithms
+ - array ,string 
+ array manipulation
+ 
+djikstra algorithm
+
+CV Preparation:
+===============
+novoresume
+ 
+
+
+

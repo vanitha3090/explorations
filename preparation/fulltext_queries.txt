@@ -1,0 +1,113 @@
+CALL db.index.fulltext.createNodeIndex("search",["OperationSubSection","Feature","Procedure"],["Name"], {analyzer: "cjk"})
+
+SHOW INDEXES
+CALL db.indexes()
+
+DROP INDEX missing_index_name IF EXISTS
+CALL db.index.fulltext.drop("search") IF EXISTS
+
+MATCH(a:Model{Name:"F21*DD"})-[:HAS_PART_NUMBER]->(part)  MATCH(a)-[r1:HAS_OPERATION_SECTION]->(b)-[:HAS_SUB_SECTION*]->(c)
+                            WHERE toLower(b.Name) contains toLower("세제 또는 섬유 유연제 사용하기")
+                           AND toLower(c.Name) contains toLower("섬유 유연제 넣고 사용하기") AND "washer" in r1.entity_prd_type AND 
+                           r1.part_number in part.Name  OPTIONAL MATCH(c)-[:HAS_IMAGE]->(f) WHERE toLower(f.file_path) contains toLower(part.Name) 
+                           RETURN DISTINCT c.Name as feature,c.desc as desc,f.file_path as mediaUrl,f.file_type as 
+                           mediaContentType,f.size as mediaFileSize UNION MATCH(a:Model{Name:"F21*DD"})-[:HAS_PART_NUMBER]->(part)  MATCH(a)-[r1:HAS_OPERATION_SECTION]->(b)-[:HAS_SUB_SECTION*]->(c)
+                            WHERE toLower(b.Name) contains toLower("세제 또는 섬유 유연제 사용하기")
+                           AND toLower(c.Name) contains toLower("섬유 유연제 넣고 사용하기") AND "washer" in r1.entity_prd_type AND 
+                           r1.part_number in part.Name  OPTIONAL MATCH(c)-[r2:HAS_PROCEDURE]->(d) WHERE "washer" in r2.entity_prd_type AND 
+                             r2.part_number in part.Name 
+                             OPTIONAL MATCH(d)-[:HAS_IMAGE]->(f) WHERE toLower(f.file_path) contains toLower(part.Name) 
+                             WITH part,c,d,f,r2 ORDER BY d.step_no RETURN DISTINCT d.Name as feature,d.desc as desc, 
+                             f.file_path as mediaUrl,f.file_type as mediaContentType,f.size as mediaFileSize
+							 
+
+*************************************************************************************
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_PART_NUMBER]->(part) WITH COLLECT(part.Name) as partnos
+CALL db.index.fulltext.queryNodes("search", "섬유 유연제 사용법 안내") YIELD node, score
+WITH node.Name as listA, score as sc, partnos as ps
+MATCH p = (n:Model{Name:"F21*DD"})-->()-[:HAS_SUB_SECTION*]->(b) 
+WHERE b.Name in listA AND all(r IN relationships(p) WHERE r.part_number IN ps)
+RETURN b.Name, sc
+*************************************************************************************
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_PART_NUMBER]->(part) WITH COLLECT(part.Name) as partnos
+CALL db.index.fulltext.queryNodes("search", "섬유 유연제 사용법 안내") YIELD node, score
+WITH node.Name as listA, score as sc, partnos as ps
+MATCH p = (n:Model{Name:"F21*DD"})-->()-[:HAS_SUB_SECTION*]->(b) 
+WHERE b.Name in listA AND all(r IN relationships(p) WHERE r.part_number IN ps)
+WITH  COLLECT(b.Name) as problems,COLLECT(b) as resultnodes
+RETURN problems as problem, labels(resultnodes[0]) as type
+*************************************************************************************
+MATCH(a:Model{Name:"F21*DD"})-[:HAS_PART_NUMBER]->(part)  WITH COLLECT(part.Name) as ps 
+MATCH p = (a)-[r1:HAS_OPERATION_SECTION]->(b)-[:HAS_SUB_SECTION*]->(c)
+                            WHERE toLower(b.Name) contains toLower("세제 또는 섬유 유연제 사용하기")
+                           AND toLower(c.Name) contains toLower("섬유 유연제 넣고 사용하기") AND "washer" in r1.entity_prd_type AND 
+                           all(r IN relationships(p) WHERE r.part_number IN ps)  
+OPTIONAL MATCH(c)-[:HAS_IMAGE]->(f) WHERE toLower(f.file_path) contains toLower(ps[0]) 
+                           RETURN DISTINCT c.Name as feature,c.desc as desc,f.file_path as mediaUrl,f.file_type as 
+                           mediaContentType,f.size as mediaFileSize
+						   
+						   
+--------------------------------------------------------------------------------------------
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_PART_NUMBER]->(part) WITH COLLECT(part.Name) as partnos
+CALL db.index.fulltext.queryNodes("search", "섬유 유연제 사용법 안내") YIELD node, score
+WITH node.Name as listA, score as sc, partnos as ps
+MATCH p = (n:Model{Name:"F21*DD"})-->()-[:HAS_SUB_SECTION*]->(b) 
+WHERE b.Name in listA AND all(r IN relationships(p) WHERE r.part_number IN ps)
+RETURN b.Name, sc
+-----------------------------------------------------------------------------------------------
+
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_PART_NUMBER]->(part) WITH COLLECT(part.Name) as partnos
+CALL db.index.fulltext.queryNodes("search", "세탁물을 분류하기 전에 알아야 할 사항을 알려주십시오") YIELD node, score
+WITH node.Name as listA, score as sc, partnos as ps
+MATCH p = (n:Model{Name:"F21*DD"})-->()-[:HAS_SUB_SECTION*]->(b) 
+WHERE b.Name in listA AND all(r IN relationships(p) WHERE r.part_number IN ps)
+RETURN b.Name, sc, ps
+
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_PART_NUMBER]->(part) WITH COLLECT(part.Name) as partnos
+
+
+CALL db.index.fulltext.queryNodes("search", "세탁물을 분류하기 전에 알아야 할 사항을 알려주십시오") YIELD node, score
+WITH node.Name as listA, score as sc
+MATCH p = (part)<-[:HAS_PART_NUMBER]-(Model{Name:"F21*DD"})-->()-[:HAS_SUB_SECTION*]->(b) 
+WITH COLLECT(part.Name) as ps,listA as listA, sc as sc,b as b,p as p
+WHERE b.Name in listA AND all(r IN relationships(p) WHERE r.part_number IN ps)
+RETURN b.Name, sc, ps
+
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_PART_NUMBER]-(part) WITH COLLECT(part.Name) as partnos
+WITH partnos[0] as modelpartnum
+CALL db.index.fulltext.queryNodes("search", "세탁을위한 적절한주기") YIELD node, score
+WITH node.Name as listA, score as sc,modelpartnum
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_OPERATION_SECTION{part_number:modelpartnum}]->()-[:HAS_SUB_SECTION{part_number:modelpartnum}*]->(b) 
+WHERE b.Name in listA 
+WITH COLLECT (b.Name) as response
+RETURN response[0]
+
+CALL db.index.fulltext.queryNodes("search", "세탁을위한 적절한주기") YIELD node, score
+WITH node.Name as listA, score as sc
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_OPERATION_SECTION{part_number:"MFL71485465"}]->()-[:HAS_SUB_SECTION{part_number:"MFL71485465"}]->(b) 
+WHERE b.Name in listA 
+WITH COLLECT (b.Name) as response
+RETURN response[0]
+
+CALL db.index.fulltext.queryNodes("search", "세탁을위한 적절한주기") YIELD node, score
+WITH node.Name as listA, score as sc
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_OPERATION_SECTION{part_number:"MFL71485465"}]->()-[:HAS_SUB_SECTION{part_number:"MFL71485465"}]->(b) 
+WHERE b.Name in listA 
+COLLECT b.Name as response
+RETURN response
+
+
+CALL db.index.fulltext.queryNodes("search", "세탁을위한 적절한주기") YIELD node, score
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_PART_NUMBER]->(part) 
+WITH part[0] as partnum, node.Name as listA, score as sc
+MATCH (n:Model{Name:"F21*DD"})-[:HAS_OPERATION_SECTION{part_number:partnum}]->()-[:HAS_SUB_SECTION{part_number:partnum}]->(b) 
+WHERE b.Name in listA 
+RETURN b.Name, sc
+
+Its working fine. Will update retrieval pipeline.
+=========================================================================
+MATCH_OPER_SECTION
+RETRIEVE_SECTION
+MATCH_CNTLPNL_FEATURE
+MATCH_SPECIFIC_CNTLPANEL_FEATURE
+RETRIEVE_CNTLPNL_FEATURE

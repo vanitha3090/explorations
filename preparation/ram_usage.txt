@@ -1,0 +1,16 @@
+https://linuxconfig.org/using-ps-command-to-sort-output-based-on-ram-usage
+
+root@si-ch1-bld120:/home01/manish.vatsa# 
+
+ps -eo pid,tid,class,rtprio,stat,vsz,rss,comm | grep 15968
+
+PID   TID CLS RTPRIO STAT    VSZ   RSS COMMAND
+15968 15968 TS       - Ssl  14213552 1165048 python
+
+
+ps aux | head -1; ps aux | grep ^nemo| sort -rnk 4 | more
+
+ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -n 20
+
+ps -eo pid,tid,class,rtprio,stat,vsz,rss,comm | grep 27988
+27988

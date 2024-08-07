@@ -1,0 +1,7 @@
+kubectl create -f tf.yaml
+kubectl get pods;kubectl get svc
+kubectl exec -it deploy/tf-vanitha -- /bin/bash
+kubectl describe deployments/tf-vanitha
+kubectl run vanitha-shell --rm -it --image nvcr.io/nvidia/pytorch:21.02-py3 -- bashnvcr.io/nvidia/tensorflow:21.02-tf2-py3
+
+kubectl delete pods/tf-vanitha-8c9b7f47b-nfwt8 deploy/tf-vanitha svc/tf-vanitha

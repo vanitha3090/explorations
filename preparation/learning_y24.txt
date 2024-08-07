@@ -1,0 +1,125 @@
+transformer architecture
+
+where softmax is used in transformer architecture
+
+difficulty in seq to seq model
+	Handling Long input Sequences: Seq2Seq models can have difficulty handling input sequences that are very long, 
+	as the context vector may not be able to capture all the information in the input sequence
+	
+	Sequence-to-sequence models are effective; however, they have the following limitations:
+		Unable to tackle long-term dependencies.
+		Unable to parallelize.
+	
+Good link: https://www.analyticsvidhya.com/blog/2022/11/top-6-interview-questions-on-transformer/
+
+sequence labelling
+	is a Natural Language Processing task. It aims to classify each token (word) in a class space
+	POS tagging, NER
+	
+tf-idf mechanism
+	W           = tf     * log (N)
+	 x,y            x,y        --------
+	                           dfx
+
+
+what does it mean dependency parser?
+	 process of examining the dependencies between the phrases of a sentence in order to determine its grammatical structure.
+	 
+small code to tokenize
+
+Experience in docker , AWS, Azure
+
+
+how can i avoid hallucination & measure it?
+	prompt tuning
+	RAG
+	perplexity measure (lower perplexity - high probablity of correct output)
+	finetuning
+	controlled decoding
+	
+intrepretability, explainability of LLM?
+	https://www.google.com/search?q=intrepretability%2C+explainability+of+LLM&sca_esv=5f1d5a2af2a99c51&sca_upv=1&rlz=1C1GCEU_enIN938IN938&sxsrf=ADLYWIJhV9rtzJMqS-xAWbLg6glMEScJUg%3A1718611257124&ei=Oe1vZr-XB_PN1e8PipCyqAc&ved=0ahUKEwj_l_PrleKGAxXzZvUHHQqIDHUQ4dUDCBA&uact=5&oq=intrepretability%2C+explainability+of+LLM&gs_lp=Egxnd3Mtd2l6LXNlcnAiJ2ludHJlcHJldGFiaWxpdHksIGV4cGxhaW5hYmlsaXR5IG9mIExMTTIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYR0jmBlDQBFjQBHABeAGQAQCYAQCgAQCqAQC4AQPIAQD4AQGYAgGgAgeYAwDiAwUSATEgQIgGAZAGCJIHATGgBwA&sclient=gws-wiz-serp
+	
+RAG?
+why do we use window size?
+how to measure RAG application answers?
+	https://towardsdatascience.com/top-evaluation-metrics-for-rag-failures-acb27d2a5485
+E2E flow of RAG 
+	considering 10CVs and want to get matched profile based on skill set
+why BLEU is not efficient?
+quantization models 
+	what is bfp16, fp16...
+
+
+https://prasad-jayanti.medium.com/what-is-query-key-value-qkv-attention-3b8f9eb15124
+
+https://towardsdatascience.com/top-evaluation-metrics-for-rag-failures-acb27d2a5485
+
+https://ashukumar27.medium.com/decoding-large-language-models-quantization-ff58964c0f31
+
+
+https://app.yoodli.ai/blog/intel-interview-process-questions-a-complete-guide-prep-tips
+
+https://www.glassdoor.co.in/Interview/Intel-Corporation-Machine-Learning-Engineer-Interview-Questions-EI_IE1519.0,17_KO18,43.htm
+
+https://www.ambitionbox.com/interviews/intel-interview-questions/software-engineer
+
+https://medium.com/@mahalakamerm/a-comprehensive-comparison-of-autoregressive-and-autoencoding-language-models-11c7043edf3c
+
+Arrays
+stacks
+recursion
+DP
+Graphs
+
+--------------------------
+tuples of tuples - sort based on seond index
+
+tf-idf
+	good boy
+	good girl
+	good boy girl
+
+map, map filter, join
+
+yield vs return
+
+list vs tuples
+
+----------------------------------------
+How does GPT-like transformers utilize only the decoder to do sequence generation?
+
+The input for a decoder-only model like GPT is typically a sequence of tokens, just like in an encoder-decoder model. 
+However, the difference lies in how the input is processed.
+
+In an encoder-decoder model, the input sequence is first processed by an encoder component that produces 
+a fixed-size representation of the input, often called the "context vector". The context vector is then used by 
+the decoder component to generate the output sequence.
+
+In contrast, in a decoder-only model like GPT, there is no separate encoder component. Instead, the input sequence 
+is directly fed into the decoder, which generates the output sequence by attending to the input sequence through 
+self-attention mechanisms.
+
+In both cases, the input sequence is typically a sequence of tokens that represent the text data being processed. 
+The tokens may be words, subwords, or characters, depending on the specific modeling approach and the granularity 
+of the text data being processed.
+
+https://www.baeldung.com/cs/bert-vs-gpt-3-architecture
+
+https://medium.com/modern-nlp/nlp-interview-questions-f062040f32f7
+
+----------------------------------------
+
+https://www.superannotate.com/blog/activation-functions-in-neural-networks
+
+
+
+
+
+Whiteboard exercises
+=====================
+1. Design chatbot system using LLM
+2. optimization for an nlp model OR multi language support
+3. Design sentiment analysis pipeline
+
+

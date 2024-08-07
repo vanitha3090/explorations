@@ -1,0 +1,80 @@
+/home/vanitha.alagarsamy/univ_code/graphqa/QA_Pipeline_2
+
+docker run -it --publish=7081:7080 --add-host=host.docker.internal:172.17.0.1 --volume=${PWD}:/src graphqa bash
+
+"/home/vanitha.alagarsamy/univ_code/graphqa/QA_Pipeline_2/Data/Manuals/en_dw_MFL71467502.json"
+
+Creation
+python main_method_v4.py --choice C --map instructionFile_ModelMap_Json.csv --gpu -1
+
+Retireval:
+python main_method_v4.py --choice E --question test4_latest_factoid_question.csv --gpu -1
+
+sbert_model = SentenceTransformer('paraphrase-MiniLM-L12-v2',device="cpu")
+
+Feedback points:
+================
+1. Report generation is not supported with excel file format. 
+   So much time for report review and also getting many issues with csv, tab delimeter format
+2. If answers are not fetched for some question , whole pipeline is getting stopped. It should continue  with next test case
+3. Few special characters(garbage) found in answers of some question
+4. Specification section(table format) is not supported
+5. APOC procedures need to be documented in README steps
+
+******************************************************
+docker run -it --publish=7081:7080 --add-host=host.docker.internal:172.17.0.1 --volume=${PWD}:/src graphqa bash
+
+python kg_creation_pipeline_inputfile.py --map instructionFile_ModelMap_Json.csv --gpu -1
+
+python my_query_pipeline_inputfile.py --question test_listtype.xlsx --gpu -1
+
+pip install -r requirement.txt
+python -m spacy download en_core_web_sm
+python -m spacy download en_core_web_lg
+python -m nltk.downloader stopwords punkt
+
+pip install nltk==3.5
+pip install xlrd==1.2.0
+./kg_creation_pipeline_inputfile.py:    server_address= "bolt://172.16.26.62:7687" # 172.16.29.4
+./my_query_pipeline_inputfile.py:       server_address= "bolt://172.16.26.62:7687" # 172.16.29.4
+-----------------
+server_address= "bolt://10.221.31.22:7041" # 172.16.29.4
+
+python main_method_v4.py --choice E --question test_lgsi_factoid.csv --gpu -1
+
+
+******************************************************************************************
+
+
+-----------------------------------------------------------
+2021 - Reference
+==================
+1. A new folder named "Log" needs to be created under same directory where the Code has
+
+2. Download the the Trained file for Factoid Question from https://drive.google.com/drive/u/0/folders/12G-tuV3sLGtAcf3rTEzHKH7PgQx8Bq0E.
+ This files to be kept at "Allen_model/Factoid_Question" folder
+ 
+3. Download the sample question file from "test3_new_Factoid_Question.csv" from Data/Question
+
+4. Execute the pipeline using "main_method_v3.py" using --runID, --question and --gpu argument. Give argument -1 for CPU
+
+Please run the code and let me know if you face any issue
+
+docker run --name ker_db_4_2 --publish=8032:7474 --publish=8030:7687 --add-host=host.docker.internal:172.17.0.1 --rm --detach neo4j:4.2.1
+Neo4j URL: http://10.221.90.120:8032/browser/
+Bolt port: 8030
+
+match(n:Instruction) where n.metaInfo="prepare cabinet opening choosing the proper location procedure step" return(n)
+
+match(n:Instruction) where n.InstructName="prepare cabinet opening choosing the proper location procedure step" return(n)
+
+
+match(n:Instruction) where n.InstructName="do not use an outlet that can be turned off with a switch." return(n)
+
+match(n:Instruction) where n.InstructName="Do not plug appliance into damaged wall outlet" return(n)
+
+match(n:Instruction) where n.InstructName="never unplug the refrigerator by pulling on the power cord" return(n)
+
+Do not plug appliance into damaged wall outlet
+Never unplug the refrigerator by pulling on the power cord
+match(n:Instruction) where n.InstructName="keep packing materials out of the reach of children" return(n)

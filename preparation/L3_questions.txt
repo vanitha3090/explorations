@@ -1,0 +1,139 @@
+Python:
+=======
+What is the difference between classmethod and staticmethod?
+How do you define abstract classes in Python?
+What is GIL and what are some of the ways to get around it?
+What are .pyc files used for?
+What are *args and **kwargs in Python functions?
+
+	
+Machine learning:
+=================
+Increasing the threshold does not change the values in the confusion matrix of a model for a given dataset.
+	False
+
+Precision & recall formula
+	Precision = 'True Positive' / (True Positive + False Positive)
+	Recall = 'True Positive' / (True Positive + False Negative)
+
+F-1 score value range 
+	0 to 1
+
+Which of the following are the disadvantages of using kNN?
+	Computation Cost is more
+	Fixing the optimal value of k is a challenge
+
+Euclidean Distance between the two data point A (2,4) and B (3,8)?
+	4.123
+	distance = sqrt((x1 – x2)2 + (y1 – y2)2 )
+	= sqrt( (3-2)^2 + (8-4)^2) = sqrt(17) = 4.123
+
+Why is naïve bayes naïve?
+	The algorithm simply assumes that all features of a class are independent.
+	The algorithm simply assumes that all features of a class are independent.
+	It uses conditional probability to make classifications, but that is not the reason it is naive nor that the results are not good which is actually not true as it depends on the data.
+	
+In Kmeans clustering, which of the following ways can be used to find optimal number of clusters?
+	Using elbow method by plotting within cluster sum of squares vs various K
+	Using domain knowledge and visualizing distribution of features to check distinct peaks
+	
+weakness of K Means clustering?
+	Finding out the ideal value of k is complex and time consuming
+
+disadvantage of using PCA.
+	The features may not carry all information present in data
+	Interpretability becomes a challenge
+
+How do you find RMSE and MSE in a linear regression model?
+
+own function to calculate multiclass classification  confusion matrix
+
+CV:
+input image size in Alexnet?
+227X227X3
+
+activation function is used in the Alexnet Output layer
+	softmax
+
+YOLO is faster than R-CNN Because:
+	YOLO stands for You Only Look Once. In practical it runs a lot faster than RCNN due to it's simpler architecture.YOLO is trained to do classification and bounding box regression at the same time
+	
+correct range of IoU score?
+	0 to 1
+	Higher the IoU , the better
+
+formula for calculating IoU score
+	Area of overlap / Area of union
+
+Deep learning:
+=============
+List the activation functions you have used so far in your projects and how you would choose one
+In a CNN, if the input size 5 X 5 and the filter size is 7 X 7, then what would be the size of the output?
+What do you mean by exploding and vanishing gradients?
+
+explain Computational Graph.
+What Are the Programming Elements in Tensorflow?
+How backpropagation is different in RNN compared to ANN?
+How does LSTM solve the vanishing gradient challenge?
+Why is GRU faster as compared to LSTM?
+How is the transformer architecture better than RNN?
+
+Explain two ways to deal with the vanishing gradient problem in a deep neural network.
+	Use the ReLU activation function instead of the sigmoid function
+	Initialize neural networks using Xavier initialization that works with tanh activation.
+	
+10. For the given points, how will you calculate the Euclidean distance in Python?
+plot1 = [1,3]
+plot2 = [2,5]
+
+The Euclidean distance can be calculated as follows:
+	euclidean_distance = sqrt( (plot1[0]-plot2[0])**2 + (plot1[1]-plot2[1])**2 )
+
+
+Which of the component is used for infusing Non-linearity in Neural networks?
+	activation function
+	
+Why a binary step function cannot be used as an activation function in a neural network?
+	Derivatives can not be calculated at certain points
+	
+Find the derivative of f(x)=(x^4-2x)^3
+	3*(x^4-2x)^2 * (4x^3-2)
+	
+What would be corresponding probability values for the below scores of two classes if you apply softmax function to it.
+Class1 - 7
+Class2 - 3
+	class1 = 0.98, class2 = 0.018
+	Score e^ Score prob
+	7 1096.633158 0.98201379
+	3 20.08553692 0.01798620996	
+	
+
+Accuracy = 30+30/30+30+10+20 = 6/9 = .66
+-------------------
+how should you maintain a deployed model?
+	dvc
+------------------------
+
+NLP:
+====
+What are the steps used to solve an NLP problem?
+	In the first step, get the text from the available dataset.
+	Now, apply stemming and lemmatization to clean the text.
+	Now, apply feature engineering techniques to the received text.
+	Embed using word2vec.
+	Now, train the built model using neural networks or other Machine Learning techniques.
+	Now it turns to evaluate the model's performance.
+	Make the appropriate changes in the model.
+	Now, the model is complete. Deploy the model.
+	
+techniques can be used for converting text to numbers
+	Term frequency
+	tf-idf
+	normalized tf
+	
+Consider a corpus of some fixed vocabulary. If we add bi-grams and trigrams to the model, what will be the change in the size of vocabulary V and bag of words matrix W?
+	W & V increases in dimension
+	
+	
+I myself Priyanshu working in Honeywell and my contact no is 8884055432 and email id is priyansh_22@gmail.com.
+Nice to meet you.

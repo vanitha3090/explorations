@@ -1,0 +1,85 @@
+1 ) predefined 
+   how to turn on sabbtath mode?
+    turn on - > 
+
+2) para qa
+   call db engine -> query execute -> para form -> 
+   call para engine with para
+   
+
+
+1. Para forming query
+   - 
+
+BEFORE USE
+===========
+MATCH (n:%s{Name:"LRFDS3006*"})-[r:HAS_CHECKLIST]->(b) OPTIONAL MATCH(b)-[*]->(c) 
+OPTIONAL MATCH(n)-[:HAS_SECTION_NOTE|HAS_SECTION_CAUTION{section_name:"before use"}]->(d)
+return b as key1,c as key2,d as key3
+
+name: checklist name
+desc:
+
+SABBATH MODE:
+=============
+MATCH (n:%s{Name:"LRFDS3006*"})-[r:HAS_FEATURE{feature_name:"sabbath mode"}]->(b) 
+OPTIONAL MATCH(n)-[:HAS_SECTION_NOTE|HAS_SECTION_CAUTION{section_name:"sabbath mode"}]->(c) return b
+
+name: feature name
+desc
+turn_on
+turn_off
+
+COMPONENT
+=========
+MATCH (n:Model{Name:"LRFDS3006*"})-[r:HAS_COMPONENT]->(b) 
+where toLower(b.Name)=toLower("Ice Compartment") 
+OPTIONAL MATCH(b)-[*]->(c)  OPTIONAL MATCH(c)-[*]->(d) return distinct b as key1,c as key2,d as key3
+
+
+
+CONTROL PANEL FEATURE
+=====================
+MATCH (n:Model{Name:"LRFDS3006*"})-[r:HAS_CONTROL_PANEL_FEATURE]->(b) 
+OPTIONAL MATCH(n)-[:HAS_SECTION_NOTE{section_name:"Control Panel"}]->(c) 
+OPTIONAL MATCH(b)-[*]->(d) return distinct b as key1,c as key2,d as key3
+
+CHANGES:
+=========
+MATCH (n:Model{Name:"LRFDS3006*"})-[r:HAS_CONTROL_PANEL]->(b)-[:HAS_CONTROL_PANEL_FEATURE]->(c)
+OPTIONAL MATCH(n)-[:HAS_SECTION_NOTE|HAS_SECTION_CAUTION{section_name:"Control Panel"}]->(d) 
+OPTIONAL MATCH(c)-[*]->(e) return distinct b as key1,c as key2,d as key3,e as key4
+
+MATCH (n:Model{Name:"LRFDS3006*"})-[r:HAS_CONTROL_PANEL]->(b)-[:HAS_CONTROL_PANEL_FEATURE]->(c) 
+OPTIONAL MATCH(c)-[*]->(d) return distinct b as key1,c as key2,d as key3
+
+STORING FOOD
+============
+MATCH (n:Model{Name:"LRFDS3006*"})-[r:STORING_FOOD]->(b)-[:HAS_STORAGE_TIP]->(c)
+OPTIONAL MATCH(b)-[HAS_SUB_INSTRUCTION]->(d) OPTIONAL MATCH(b)-[*]->(e)
+return distinct b as key1,c as key2,d as key3,e as key4
+
+OPTIONAL MATCH(n)-[:HAS_SECTION_NOTE|HAS_SECTION_CAUTION{section_name:"storing food"}]->(f)
+
+
+MATCH (n:Model{Name:"LRFDS3006*"})-[r:STORING_FOOD]->(b)-[:HAS_STORAGE_TIP]->(c) 
+OPTIONAL MATCH(b)-[*]->(d) OPTIONAL MATCH(n)-[:HAS_SECTION_NOTE|HAS_SECTION_CAUTION{section_name:"ice compartment"}]->(e) 
+return distinct b as key1,c as key2,d as key3,e as key4
+
+b - name,desc
+c - name,how_to_store
+d - name,desc
+e - (note,cautions) - name
+
+fresh air filter
+Fresh Air Filter
+
+MATCH(a:Model{Name:"LRFDS3006*"})-[r:HAS_CONTROL_PANEL]->(b)-[:HAS_CONTROL_PANEL_FEATURE]->(c) WHERE toLower(c.feature)=toLower("fresh air filter")  RETURN r.feature as feature,c.Name as desc
+
+MATCH(a:Model{Name:"LRFDS3006*"})-[r:HAS_CONTROL_PANEL_FEATURE]->(b) WHERE toLower(r.feature)=toLower("fresh air filter")  RETURN r.feature as feature,b.Name as desc 
+
+2. Exising query with specific intent(any changes)
+
+Image:
+
+

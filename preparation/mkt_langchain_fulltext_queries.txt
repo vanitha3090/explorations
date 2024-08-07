@@ -1,0 +1,93 @@
+streamlit run inference.py --server.address="0.0.0.0" --server.port=9998
+
+
+simple KG -> less schema
+
+Langchain -> prompt modification -> i will be
+
+Manual template cypher query -> Aditya
+
+Inspect:
+=========
+AX9888WE 색상입니다  카밍 베이지?
+AX9888WE color is nature beige?
+
+AX9888WE 모델은 스마트 인버터 모터?
+AX9888WE model is a smart inverter motor? 
+---> 
+	we didnt specify explicitly parameter name
+	Also we are not sure "smart inverter motor" is parameter name OR value
+
+모델 AX9888WE에 thinQ 기능이 있습니까?
+does the model AX9888WE has thinQ feature?
+---->
+	only parameter name has given
+	Also we are not sure "thinQ" is parameter name OR value
+
+에서 제조된 모델 AX9888WE는 India?
+does the model AX9888WE manufactured in India?
+
+
+Model no, (parameter name), (parameter value)
+AX9888WE,  (color/색상),      (nature beige/네이처 베이지)
+AX9888WE,  (),              (smart inverter motor/스마트 인버터 모터)
+AX9888WE,  (ThinQ/ThinQ),      ()
+AX9888WE,   (country of manufacture/제조국)  India
+
+Cypher queries:
+MATCH(a:Node{name:"AX9888WE"})-[r:Relation]->(b:Node) WHERE r.name contains "색상" and b.value contains "네이처 베이지" RETURN a,r,b
+
+MATCH(a:Node{name:"AX9888WE"})-[r:Relation]->(b:Node) 
+RETURN b.value,
+CASE r.name
+WHEN r.name contains "색상" and b.value contains "네이처 베이지" THEN "YES"
+ELSE "NO"
+END AS  result
+
+
+Is there any shipping charge?
+Is there any discount for XX card?
+services applicable for light service type?
+Is there any subscription fee?
+Is there any maintenance free charge?
+can i rent out the product for 1 month ?
+I ordered 5160FA3752G model, but is it possible to ship/deliver on weekends/holiday?
+Can I order the AFC72909501 model overseas?
+
+카밍 베이지
+
+
+================
+CALL db.index.fulltext.queryNodes("searchNode", "AX9888WE 색상  네이처 베이지?") YIELD node, score
+RETURN node.name,score 
+
+CALL db.indexes()
+DROP INDEX searchRel
+DROP INDEX searchNode
+
+CALL db.index.fulltext.createNodeIndex("searchNode",["Node"],["name"], {analyzer: "cjk"})
+CALL db.index.fulltext.createRelationshipIndex("searchRel",["Relation"],["name"], {analyzer: "cjk"})
+
+CALL db.index.fulltext.queryNodes("searchNode", "FX25ESE 가벼운 서비스 유형은 드럼 관리를 포함합니까?") YIELD node, score
+WITH node.name as nodename, score as nodescore
+CALL db.index.fulltext.queryRelationships("searchRel", "FX25ESE 가벼운 서비스 유형은 드럼 관리를 포함합니까?") YIELD relationship, score 
+RETURN relationship.name, score, nodename, nodescore
+
+
+CALL db.index.fulltext.queryNodes("searchNode", "FX25ESE 가벼운 서비스 유형은 드럼 관리를 포함합니까?") YIELD node, score RETURN node.name,score
+CALL db.index.fulltext.queryRelationships("searchRel", "FX25ESE 가벼운 서비스 유형은 드럼 관리를 포함합니까?") YIELD relationship, score 
+RETURN relationship.name, score
+
+
+CALL db.index.fulltext.queryNodes("searchNode", "FX25ESE 가벼운 서비스 유형은 드럼 관리를 포함합니까?") YIELD Node, score 
+
+CALL db.index.fulltext.queryRelationships("searchRel", "FX25ESE 가벼운 서비스 유형은 드럼 관리를 포함합니까?") YIELD Relation, score 
+RETURN Relation.name, score
+
+
+
+CREATE FULLTEXT INDEX node_fulltext_test FOR (n:Node) ON EACH [n.name]
+OPTIONS {indexConfig: {`fulltext.analyzer`: 'cjk'}}
+
+
+DROP INDEX search

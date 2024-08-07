@@ -1,0 +1,16 @@
+MATCH(n:Product{Name:"kepler"})<-[:TypeOf]-(m:Model)
+MATCH(m)-[:HAS_PART_NUMBER]->(part) WITH COLLECT(part.Name) as part_nos
+MATCH p = (m)-[r]->(o:OperationSection)-[r1]->(s:OperationSubSection)
+WHERE all(r IN relationships(p) WHERE 
+r.part_number IN part_nos) RETURN DISTINCT o.Name as L1,s.Name as L2, r.part_number
+
+
+MATCH(n:Product{Name:"kepler"})<-[:TypeOf]-(m:Model)
+MATCH(m)-[:HAS_PART_NUMBER]->(part) WITH COLLECT(part.Name) as part_nos
+MATCH(m)-[r]->(c:Cause)
+WHERE r.part_number IN part_nos RETURN DISTINCT r.error_code,r.problem, r.noise, c.Name,r.part_number
+
+MATCH(n:Product{Name:"washing machine"})<-[:TypeOf]-(m:Model{Name:"F4*C"})
+MATCH(m)-[:HAS_PART_NUMBER]->(part) WITH COLLECT(part.Name) as part_nos
+MATCH(m)-[r]->(c:Cause)
+WHERE r.part_number IN part_nos RETURN DISTINCT r.error_code,r.problem, r.noise, c.Name,r.part_number

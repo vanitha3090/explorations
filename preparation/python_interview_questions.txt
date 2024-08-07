@@ -1,0 +1,42 @@
+What are nolocal and global keywords used for?
+How can you create Empty NumPy Array In Python?
+
+
+What is <Yield> Keyword in Python?
+How do you debug a Python program?
+
+What is pickling and unpickling in Python?
+
+<list> and <dict> comprehensions? Explain with an example.
+
+-----------------------
+what’s wrong with the below code?
+testProc([1, 2, 3]) # Explicitly passing in a list
+testProc()  # Using a default empty list
+ 
+def testProc(n = []):
+    # Do something with n
+ 
+print n
+
+------------------
+esult of the below Python code?
+keyword = 'aeioubcdfg'
+keyword [:3] + keyword [3:]
+
+-----------------------------
+def add ():
+    return [lambda n: index + n for index in range (4)]
+
+print [a (2) for a in add ()]
+
+------------------------------------
+Draw Box Plot:
+3,5,8,8,9,11,12,12,13,13,16
+
+accuarcay=Tp+tn/Tp+Tn+fp+FN
+
+
+Hey, i am IJAS and right now sitting in front of you. Have comleted my BE in 2022.
+He is my personal information 7478207984 and emai id is mailto:debjitchowdhury239@gmail.com.
+I love to know more about this job profiles.

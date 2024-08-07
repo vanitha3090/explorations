@@ -1,0 +1,36 @@
+
+https://www.baeldung.com/cs/bert-vs-gpt-3-architecture
+
+Good luck with your interview
+
+https://rentry.org/llm-training
+
+Challenges and Applications of Large Language Models
+
+https://github.com/bkitano/llama-from-scratch
+
+https://www.philschmid.de/tags/generativeai
+
+https://web.stanford.edu/class/cs224n/ and 224u, 224v
+
+https://eugeneyan.com/writing/llm-patterns/ (many other good blogposts)
+
+https://huyenchip.com/2023/04/11/llm-engineering.html
+
+https://lilianweng.github.io
+
+https://hamel.dev/notes/llm
+
+https://github.com/underlines/awesome-ml/blob/master/llm-tools.md
+
+
+RAG stuff(sentence embedding, vector db):
+https://www.pinecone.io/learn/
+https://www.sbert.net/
+https://haystackconf.com/us2023/keynote/
+https://www.latent.space/p/llamaindex#details
+
+
+Python Data Structures & Algorithms + LEETCODE Exercises - udemy course
+
+https://www.geeksforgeeks.org/python-data-structures-and-algorithms/

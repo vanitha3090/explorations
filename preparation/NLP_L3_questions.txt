@@ -1,0 +1,34 @@
+few popular methods used for word embedding.
+In NLP, Context modeling is supported with which one of the following word embeddings
+what are the differences between GPT and BERT?
+	GPT is not bidirectional and has no concept of masking
+	BERT adds next sentence prediction task in training and so it also has a segment embedding	
+
+Is converting all text in uppercase to lowercase always a good idea? Explain with the help of an example
+	No, for words like The, the, THE, it is a good idea as they all will have the same meaning. However, for a word like brown which can be used as a surname for someone by the name Robert Brown, it won’t be a good idea as the word ‘brown’ has different meanings for both the cases. We, therefore, would want to treat them differently. Hence, it is better to change uppercase letters at the beginning of a sentence to lowercase, convert headings and titles to which are all in capitals to lowercase, and leave the remaining text unchanged.
+
+Is tokenizing a sentence based on white-space ‘ ‘ character sufficient? If not, give an example where it may not work.
+	Tokenizing a sentence using the white space character is not always sufficient.
+	Consider the example,
+		“ One of our users said, ‘I love Dezyre’s content’. ”
+		Tokenizing purely based on white space would result in the following words:
+		‘I        said,   content’.   
+
+List a few types of linguistic ambiguities.
+	Lexical Ambiguity: This type of ambiguity is observed because of homonyms and polysemy in a sentence.
+	Syntactic Ambiguity: A syntactic ambiguity is observed when based on the sentence’s syntax, more than one meaning is possible.
+	Semantic Ambiguity: This ambiguity occurs when a sentence contains ambiguous words or phrases that have ambiguous meanings.
+
+toughest problem in nlp
+
+Develop Regex :
+================
+I called Rajat on his Phone +91 9867341234 but he was in US so I had to call +1 34534234 but he didnt attend. He has mailed from his mail id Sample01@gmail.com
+
+---------------------------
+[Going to bed... Gotta work in the morning...  good night twitters!!!,
+@IAmJMAck and I would be nothing without people like u..pay it forward,
+#F1 Bouemi makes a move on Raikonnen! He is all over the back of him, and overcooks it on the last corner]
+
+you can ask him to remove, stop words -> then perform tokenize -> then stem
+		

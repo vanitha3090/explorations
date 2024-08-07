@@ -1,0 +1,32 @@
+https://www.geeksforgeeks.org/regularization-in-machine-learning/
+
+Overfitting is a phenomenon that occurs when a Machine Learning model is constrained to the training set and not able to perform well on unseen data. That is when our model learns the noise in the training data as well. This is the case when our model memorizes the training data instead of learning the patterns in it.
+
+Underfitting on the other hand is the case when our model is not able to learn even the basic patterns available in the dataset. In the case of the underfitting model is unable to perform well even on the training data hence we cannot expect it to perform well on the validation data. This is the case when we are supposed to increase the complexity of the model or add more features to the feature set
+
+
+Regularization
+In Python, Regularization is a technique used to prevent overfitting by adding a penalty term to the loss function, discouraging the model from assigning too much importance to individual features or coefficients.
+Let’s explore some more detailed explanations about the role of Regularization in Python:
+
+Complexity Control: Regularization helps control model complexity by preventing overfitting to training data, resulting in better generalization to new data.
+Preventing Overfitting: One way to prevent overfitting is to use regularization, which penalizes large coefficients and constrains their magnitudes, thereby preventing a model from becoming overly complex and memorizing the training data instead of learning its underlying patterns.
+Balancing Bias and Variance: Regularization can help balance the trade-off between model bias (underfitting) and model variance (overfitting) in machine learning, which leads to improved performance.
+Feature Selection: Some regularization methods, such as L1 regularization (Lasso), promote sparse solutions that drive some feature coefficients to zero. This automatically selects important features while excluding less important ones.
+Handling Multicollinearity: When features are highly correlated (multicollinearity), regularization can stabilize the model by reducing coefficient sensitivity to small data changes.
+Generalization: Regularized models learn underlying patterns of data for better generalization to new data, instead of memorizing specific examples.
+
+Overfitting happens when a machine learning model learns training data too well and can't generalize to new data. Here are some ways to avoid overfitting:
+Data augmentation: Apply transformations to training data, like rotations, flips, crops, and color adjustments, to create new variations. This helps the model generalize better and be more robust to different scenarios.
+Regularization: Add a penalty term to the model's loss function to reduce the complexity and magnitude of its parameters. This prevents the model from learning something too complex and discourages it from fitting noise or outliers in the data.
+Cross-validation: Use your initial training data to generate multiple mini train-test splits and use those splits to tune your model. This helps you choose an algorithm that isn't too complex and will cause overfitting.
+Early stopping: Pause the training phase before the model learns the noise in the data. However, it's important to get the timing right.
+Feature selection: Choose the best features and remove unnecessary ones.
+Reduce model complexity: Make the model simpler
+
+
+Predictive Modeling:
+	https://www.qlik.com/us/predictive-analytics/predictive-modeling
+	
+Ensemble models
+	https://www.sciencedirect.com/topics/computer-science/ensemble-modeling

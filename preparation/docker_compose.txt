@@ -1,0 +1,37 @@
+[foodhealth]
+docker run steps
+1. docker-compose build
+2. docker-compose up -d
+
+docker stop step
+1. docker-compose down
+
+[ker]
+docker run steps
+1. ./script/prerun_for_ker.sh
+2. git co runserver.sh (if you want to run django version)
+3. docker-compose build
+4. docker-compose up -d
+
+docker stop step
+1. docker-compose down
+
+
+[ker_ko]
+docker run steps
+FLASK BASED
+============
+./script/prerun_for_ker_ko.sh
+docker-compose build
+docker-compose up -d
+KMS based
+===========
+.\script\prerun_kms_ker_ko.sh
+docker-compose build
+docker-compose up
+  
+  
+  
+docker stop step
+1. docker-compose down
+
